@@ -15,8 +15,15 @@ namespace PII2025Listas.CircularLinked
 		public void AddLast(T item)
 		{
 			var n = new CircularLinkedNode<T>(item);
-			if (tail is null) { tail = n; tail.Next = tail; }
-			else { n.Next = tail.Next; tail.Next = n; tail = n; }
+			if (tail is null) { 
+				tail = n; 
+				tail.Next = tail; 
+			}
+			else { 
+				n.Next = tail.Next; 
+				tail.Next = n; 
+				tail = n; 
+			}
 			Count++;
 		}
 
@@ -25,8 +32,10 @@ namespace PII2025Listas.CircularLinked
 			if (tail is null) throw new InvalidOperationException("Vacía");
 			var head = tail.Next!;
 			var v = head.Data;
-			if (head == tail) tail = null;
-			else tail.Next = head.Next;
+			if (head == tail) 
+				tail = null;
+			else 
+				tail.Next = head.Next;
 			Count--;
 			return v;
 		}
@@ -37,7 +46,12 @@ namespace PII2025Listas.CircularLinked
 			var sb = new System.Text.StringBuilder().Append('[');
 			var head = tail.Next!;
 			var c = head;
-			do { sb.Append(c.Data); c = c.Next!; if (c != head) sb.Append(", "); } while (c != head);
+			do { 
+				sb.Append(c.Data); 
+				c = c.Next!; 
+				if (c != head) 
+					sb.Append(", "); 
+			} while (c != head);
 			return sb.Append(']').ToString();
 		}
 	}

@@ -15,7 +15,8 @@ namespace PII2025Listas.Listas
 
 		public void AddFirst(T item)
 		{
-			var n = new SinglyLinkedNode<T>(item) { Next = head };
+			var n = new SinglyLinkedNode<T>(item);
+			n.Next = head;
 			head = n;
 			if (tail is null) tail = n;
 			Count++;
@@ -24,8 +25,13 @@ namespace PII2025Listas.Listas
 		public void AddLast(T item)
 		{
 			var n = new SinglyLinkedNode<T>(item);
-			if (tail is null) { head = tail = n; }
-			else { tail.Next = n; tail = n; }
+			if (tail is null) { 
+				head = tail = n; 
+			}
+			else { 
+				tail.Next = n; 
+				tail = n; 
+			}
 			Count++;
 		}
 
